@@ -1,0 +1,27 @@
+{% extends 'website/base.html'%} 
+{% block content %}  
+<body> 
+    <br> 
+    <div class="container bg-dark p-5 form-layout"> 
+        <h3> login to you account</h3> 
+
+        <hr> 
+        <br> 
+        <form method ="POST" autocomplete = "off"></form> 
+        {% csrf_token %} 
+        {{login_form|crispy}} 
+        <br> 
+        <button type="submit" class="btn btn-primary w-100 btn-block p-2">Login</button>  
+        </form> 
+
+        <br> 
+        <div class="text-center">  
+            <p> Dont have an account? </p> <a href="{% url 'register' %}">Login</a>
+        </div> 
+      </div> 
+      <br> 
+
+   
+</body>
+
+{% endblock %}
