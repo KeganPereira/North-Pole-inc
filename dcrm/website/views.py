@@ -41,7 +41,8 @@ def mylogin(request):
     return render(request, 'website/Login.html', context=context)  
 
 def logout(request): 
-    return render(request,'website/Login.html')
+    auth.logout(request) 
+    return redirect("")
 
         
 
