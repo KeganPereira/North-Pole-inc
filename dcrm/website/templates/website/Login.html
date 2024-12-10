@@ -1,4 +1,7 @@
-{% extends 'website/base.html'%} 
+{% extends 'website/base.html'%}  
+
+{% load crispy_forms_tags %}
+
 {% block content %}  
 <body> 
     <br> 
@@ -7,16 +10,17 @@
 
         <hr> 
         <br> 
-        <form method ="POST" autocomplete = "off"></form> 
+        <form method ="POST" autocomplete = "off"> 
+
         {% csrf_token %} 
-        {{login_form|crispy}} 
+        {{login_form|crispy}}
         <br> 
         <button type="submit" class="btn btn-primary w-100 btn-block p-2">Login</button>  
         </form> 
 
         <br> 
         <div class="text-center">  
-            <p> Dont have an account? </p> <a href="{% url 'register' %}">Login</a>
+            <p> Dont have an account? </p> <a href="{% url 'register' %}">Register</a>
         </div> 
       </div> 
       <br> 
