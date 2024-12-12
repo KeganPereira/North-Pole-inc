@@ -16,5 +16,10 @@ class CreateUserForm(UserCreationForm):
 #login user 
 class LoginForm(AuthenticationForm): 
     username= forms.CharField(widget= TextInput()) 
-    password= forms.CharField(widget= PasswordInput()) 
+    password= forms.CharField(widget= PasswordInput())  
+
+# Ride booking 
+
+class Ride_booking_form(): 
+    
     
