@@ -92,7 +92,7 @@ def ride(request):
 
     context= {'form':form}  
 
-    return render(request, 'website/booking.html', context=context) 
+    return render(request, 'website/bookings.html', context=context) 
 
 
 

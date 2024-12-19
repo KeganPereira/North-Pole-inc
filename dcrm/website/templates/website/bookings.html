@@ -1,0 +1,32 @@
+{% extends 'website/base.html'%} 
+{% load static %} 
+{% load crispy_forms_tags %} 
+
+{% block content %} 
+
+<br> 
+<br>
+<div class= "container bg-primary text-white p-5 from-layout"> 
+    <h3 class= "myfont"> Book your reindeer Ride </h3> 
+    <hr> 
+    <br> 
+
+  <form action ="{% url 'booking1' %}" method =="POST" autocomplete="off"> 
+    {% csrf_token %} 
+
+    {{form|crispy}} 
+    <br> 
+    <h2 id ="ride output"class= "myfont" >Ride Cost: $0.00 </h2> 
+    <br> 
+
+    <button type = "submit" class= "btn  btn-primary w-100 btn-block p-2 myfont"> Book &nbsp; <i class =  "fa fa-shopping-cart" aria-hidden= "true"></i></button> 
+  </form>
+   
+
+</div> 
+<br>  
+
+<script src = "{% static 'js/ride.js' %}"></script> 
+
+{% endblock %}
+
