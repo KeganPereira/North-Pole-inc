@@ -5,6 +5,7 @@ function update_cost() {
 
     arrive = new Date(arrive);  
     leave = new Date(leave); 
+    let button = document.getElementById('book'); 
     let diff = leave.getTime() - arrive.getTime(); 
     let days = Math.round(Math.abs(diff / (1000 * 60 * 60 * 24))); 
 
@@ -18,9 +19,14 @@ function update_cost() {
     
     // Validate that the number is not less than 0
     if (adultsValue < 0 || childrenValue < 0 || oapsValue < 0) {
-        alert("Number of people cannot be less than 0.");
-        return;
-    }
+         
+        button.disabled = true 
+    
+        
+    } else{ 
+        button.disabled= false
+    } 
+
 
     if (String(days) == "NaN") { 
         let price = document.getElementById('ride_output'); 

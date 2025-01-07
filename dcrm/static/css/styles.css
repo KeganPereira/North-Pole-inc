@@ -37,4 +37,9 @@
   max-width: 100%; 
   max-height: 50%; 
   width: auto;
-}
+}  
+
+.btn{ 
+  background-color: blueviolet; 
+  border-color: blueviolet;
+} 
