@@ -16,3 +16,25 @@
 
     font-family: myFirstFont;
   }
+
+
+  body {
+    background-image: url('/static/images/christmas.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: Makes the background image stay in place when scrolling */
+    background-position: center; /* Optional: Centers the image */
+    color: white; /* Optional: Ensure text is readable on the background */
+} 
+.image1-container{ 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  
+} 
+
+.img-fluid{ 
+  max-width: 100%; 
+  max-height: 50%; 
+  width: auto;
+}

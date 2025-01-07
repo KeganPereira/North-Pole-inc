@@ -15,7 +15,7 @@ class CreateUserForm(UserCreationForm):
 
 
 
-#login user 
+#login user  
 class LoginForm(AuthenticationForm): 
     username= forms.CharField(widget= TextInput()) 
     password= forms.CharField(widget= PasswordInput())  

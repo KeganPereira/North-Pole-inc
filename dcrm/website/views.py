@@ -57,7 +57,8 @@ def ride(request):
 
         form= Ride_booking_form(updated_request) 
         if form.is_valid(): 
-            obj = form.save(commit=False)  
+            obj = form.save(commit=False)   
+            
             # calculate the amount of date
             arrive= obj.ride_booking_date_arrive 
             depart= obj.ride_booking_date_leave 

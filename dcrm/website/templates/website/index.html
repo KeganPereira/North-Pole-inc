@@ -1,15 +1,23 @@
-{% extends 'website/base.html' %} 
+{% extends 'website/base.html' %}  
+{% load static %}
 
 {% block content %}  
 <div class=" text-center">
- <h1 class="h1 myfont" >North Pole inc.</h1>  
+ <h1 class="h1 myfont" >North Pole inc.</h1>   
+ <link rel="stylesheet" href="{% static "css/styles.css" %}">
+ 
+ 
  <br> 
  <h5 class="myfont"> Application</h5> 
  <hr> 
  <br> 
  <a href="{% url 'register' %}" class= "btn btn-primary"> Create your account</a>  
 
-</div> 
+
+</div>   
+  <div class = "image1-container">
+   <img  src="/static/images/image2.jpg" class="img-fluid" alt="santa">
+    
 
 
  {% endblock %}
