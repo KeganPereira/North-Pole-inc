@@ -16,7 +16,7 @@
       
       <div class="card-body">
         
-        <form action ="{% url 'booking1' %}" method =="POST" autocomplete="off"> 
+        <form method ="POST" autocomplete="off"> 
           {% csrf_token %} 
       
           {{form|crispy}} 

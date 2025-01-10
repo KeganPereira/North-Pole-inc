@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect 
-from .forms import CreateUserForm,LoginForm, Ride_booking_form
+from .forms import CreateUserForm,LoginForm, Ride_booking_form 
+from .models import Ride_Bookings
 from django.contrib.auth.models import auth 
 from django.contrib.auth import authenticate 
 from django.contrib.auth.decorators import login_required 
-from django. contrib import messages
+from django. contrib import messages 
+import requests 
+import datetime  
+
 
 # Create your views here. 
 
@@ -50,24 +54,24 @@ def logout(request):
 @login_required(login_url='my-login') 
 def ride(request):  
     form= Ride_booking_form()  
-   
     if request.method == "POST": 
         updated_request= request.POST.copy() 
-        updated_request.method({'ride_user_id_id ': request.user}) 
+        updated_request.update({'ride_user_id_id ': request.user}) 
 
         form= Ride_booking_form(updated_request) 
+        print("I am here")
         if form.is_valid(): 
             obj = form.save(commit=False)   
             
             # calculate the amount of date
             arrive= obj.ride_booking_date_arrive 
             depart= obj.ride_booking_date_leave 
-            result = arrive-depart 
+            result = depart - arrive 
             print("Number of days: ", result.days) 
 
             ride_total_cost = int(obj.ride_booking_adults ) *65\
                               +int(obj.ride_booking_children) * 35\
-                              +int(obj.hotel_booking_oap) * 40  
+                              +int(obj.ride_booking_oap) * 40  
             
             ride_total_cost *= int(result.days)  
 
@@ -90,16 +94,56 @@ def ride(request):
         else: 
             print("There was a problem with the form") 
             return redirect("booking1") 
+    else:
+        print("There is an issue with the post")
 
     context= {'form':form}  
 
     return render(request, 'website/bookings.html', context=context) 
 
+@login_required(login_url= 'login') 
+def dashboard(request):   
+    tablestuff= Ride_Bookings.objects.filter(ride_user_id_id=request.user) 
+    context= {'records': tablestuff} 
+
+
+
+    return render (request, 'website/dashboard.html', context=context)   
+
+# api 
+def api(request): 
+    api_key = '5b7b4c756201a012ea2c507e74f5b017' 
+    city = 'Rovaniemi' 
+
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+
+    current_date= datetime.now() 
+    formatted_date = current_date.strftime("%b %d/%m/%Y") 
+
+    if response.status_code==200:  
+        data = response.json()
+        temp= data['main'] ['temp'] 
+        description = data['weather'][0]['description']
+        icon_code = data['weather'][0]['icon']
+
+        context = {
+                        'date': formatted_date,
+                        'temperature': temp,
+                        'description': description,
+                        'icon_code': icon_code,
+            }
+        return render(request, 'website/index.html', context)
 
 
 
 
-        
+            
+
+
+
+
+            
 
 
 

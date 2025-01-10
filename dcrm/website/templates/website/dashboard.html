@@ -1,0 +1,39 @@
+{% extends 'website/base.html' %} 
+{% load static %}   
+{% load crispy_forms_tags%}
+{% block content %} 
+
+<table class="table">
+<br>
+    <thead class="table-primary">
+        <th scope="col"> Date Booked: </th>
+        <th scope="col"> Adult Number: </th>
+        <th scope="col"> Children Number: </th>
+        <th scope="col"> Pensioner Number: </th>
+        <th scope= "col"> Total Cost: </th>          
+    </thead>
+<tbody>
+
+    {% if records %}
+        {% for record in records %}
+        <tr>
+            <td> {{record.ride_booking_date}} </td>
+            <td> {{record.ride_booking_adults}} </td>
+            <td> {{record.ride_booking_children}} </td>
+            <td> {{record.ride_booking_oap}} </td>
+            <td> {{record.ride_total_cost}} </td>
+           
+            
+            {% endfor %}
+        {% endif %}
+
+        </tr>
+
+</tbody>
+</table>
+
+
+
+
+{% endblock %} 
+
