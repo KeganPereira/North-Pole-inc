@@ -5,27 +5,43 @@
 <div class=" text-center">
  <h1 class="h1 myfont" >North Pole inc.</h1>   
  <link rel="stylesheet" href="{% static "css/styles.css" %}"> 
- <div class = "box" >
+ <div class = "box" > 
+<h5 class="myfont"> Application</h5>  
+
+<div class="card" style="width: 35rem; items-align: center; ">
+  <img src="http://openweathermap.org/img/wn/{{ icon_code }}@4x.png" alt="{{ description }}"> 
+  
+  <div class="card-body">
+
+
+    <div class="bottomW"><h2>Today's Forecast: {{ description }}</h2></div>  
+    <div class="leftW"><h2>{{ date }}</h2></div>
+    <div class="rightW"><h2>{{ temperature }}°C</h2></div>
+    
+   
+  </div>
+</div> 
+
+
+<div class="middleW">
+  <img src="http://openweathermap.org/img/wn/{{ icon_code }}@4x.png" alt="{{ description }}">
+
+<div class="bottomW"><h2>Today's Forecast: {{ description }}</h2></div>
+
+</div>
+</div>
 
   <div class="topW">
       <div class="leftW"><h2>{{ date }}</h2></div>
       <div class="rightW"><h2>{{ temperature }}°C</h2></div>
 
-  </div>
 
-  <div class="middleW">
-      <img src="http://openweathermap.org/img/wn/{{ icon_code }}@4x.png" alt="{{ description }}">
-  </div>
-
-  <div class="bottomW"><h2>Today's Forecast: {{ description }}</h2></div>
 
 </div>
-
-
  
  
  <br> 
- <h5 class="myfont"> Application</h5> 
+
  <hr> 
  <br> 
 

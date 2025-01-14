@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required 
 from django. contrib import messages 
 import requests 
-import datetime  
+from datetime import datetime  
 
 
 # Create your views here. 
@@ -14,6 +14,31 @@ import datetime
 
 
 def home(request): 
+    api_key = '5b7b4c756201a012ea2c507e74f5b017' 
+    city = 'California' 
+
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    response = requests.get(url)
+
+    current_date= datetime.now() 
+    formatted_date = current_date.strftime("%b %d/%m/%Y") 
+
+    data = response.json()
+    temp= data['main']['temp'] 
+    description = data['weather'][0]['description']
+    icon_code = data['weather'][0]['icon']
+
+    context = {
+                    'date': formatted_date,
+                    'temperature': temp,
+                    'description': description,
+                    'icon_code': icon_code,
+        }
+    return render(request, 'website/index.html', context= context)
+
+
+
+
     return render(request, 'website/index.html') 
 
 def register(request): 
@@ -110,30 +135,8 @@ def dashboard(request):
 
     return render (request, 'website/dashboard.html', context=context)   
 
-# api 
-def api(request): 
-    api_key = '5b7b4c756201a012ea2c507e74f5b017' 
-    city = 'Rovaniemi' 
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-    response = requests.get(url)
-
-    current_date= datetime.now() 
-    formatted_date = current_date.strftime("%b %d/%m/%Y") 
-
-    if response.status_code==200:  
-        data = response.json()
-        temp= data['main'] ['temp'] 
-        description = data['weather'][0]['description']
-        icon_code = data['weather'][0]['icon']
-
-        context = {
-                        'date': formatted_date,
-                        'temperature': temp,
-                        'description': description,
-                        'icon_code': icon_code,
-            }
-        return render(request, 'website/index.html', context)
+   
 
 
 
