@@ -15,7 +15,7 @@ from datetime import datetime
 
 def home(request): 
     api_key = '5b7b4c756201a012ea2c507e74f5b017' 
-    city = 'California' 
+    city = 'Krakow' 
 
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
@@ -73,7 +73,10 @@ def mylogin(request):
 
 def logout(request): 
     auth.logout(request) 
-    return redirect("") 
+    return redirect("")  
+
+def about_us(request): 
+    return render(request,"website/about_us.html")
 
 
 @login_required(login_url='my-login') 
