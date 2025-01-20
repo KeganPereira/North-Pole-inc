@@ -4,10 +4,24 @@ function update_cost() {
     let leave = document.getElementById('id_ride_booking_date_leave').value;
 
     arrive = new Date(arrive);  
-    leave = new Date(leave); 
+    leave = new Date(leave);  
+    // Validate that the dates are correct
+    if (isNaN(arrive.getTime()) || isNaN(leave.getTime())) {
+        alert("Invalid date selected.");
+        return;
+        }
+
+        // Ensure that the arrive date is before the leave date
+    if (arrive >= leave) {
+        alert("Arrival date must be before the departure date.");
+        return;
+    }
+
+
     let button = document.getElementById('book'); 
     let diff = leave.getTime() - arrive.getTime(); 
-    let days = Math.round(Math.abs(diff / (1000 * 60 * 60 * 24))); 
+    let days = Math.round(Math.abs(diff / (1000 * 60 * 60 * 24)));  
+    
 
     let adults = document.getElementById("id_ride_booking_adults");
     let children = document.getElementById("id_ride_booking_children");
@@ -18,7 +32,7 @@ function update_cost() {
     let oapsValue = parseInt(oaps.value);
     
     // Validate that the number is not less than 0
-    if (adultsValue < 0 || childrenValue < 0 || oapsValue < 0) {
+    if (adultsValue <= 0 && childrenValue <= 0 && oapsValue <=0) {
          
         button.disabled = true 
     
