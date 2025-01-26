@@ -28,7 +28,11 @@
             &nbsp;     &nbsp;     &nbsp;
             <li class="nav-item">
               <a class="nav-link" href="{% url 'booking1' %}">Book your ride &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
-            </li>
+            </li> 
+            &nbsp;     &nbsp;     &nbsp;
+            <li class="nav-item">
+             <a class="nav-link" href="{% url 'about' %}">About us</a>
+           </li>
         
          {% else %}
          <li class="nav-item">
@@ -37,7 +41,11 @@
           &nbsp;     &nbsp;     &nbsp;
           <li class="nav-item">
            <a class="nav-link" href="{% url 'login' %}">Login</a>
-         </li>
+         </li> 
+         &nbsp;     &nbsp;     &nbsp;
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">About us</a>
+        </li>
         {% endif %}
        </ul>
       </div>
