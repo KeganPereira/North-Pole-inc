@@ -1,20 +1,57 @@
 {%extends 'website/base.html'%} 
 {%load static%}  
 {% block content %}
+<div  class="jumbotron-jumbtron-fluid2"> 
+  <div class = "contiainer">
+ 
+ 
+ <h1  class ="display-4; myfont"  style="text-align:center;"> <strong><u> Packages</u></strong> </h1> 
+ 
 
-<br> 
-<div class="text-center container-fluid">
-    <h1 class="h1 myfont">About North Pole Inc.</h1>
-</div> 
-<br> 
-<div class="card" style="width: 18rem;">
-    <img src="/static/images/image2.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+
+     
+ </p>
+ 
+ </div>
+ </div> 
+ <br> 
+ <hr>  
+ <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card shadow-lg" style="width: 18rem;">
+        <img class="card-img-top" src="/static/images/image3.jpg" alt="Courses">
+        <div class="card-body">
+          <h5 class="card-title">Courses (age 4-12)</h5>
+          <p class="card-text myfont">Little Explorers, Big Discoveries!</p>
+          <a href="{% url '' %}" class="btn btn-primary">Go to the page</a>
+        </div>
     </div>
   </div>
+  <div class="col-sm">
+    <div class="card shadow-lg" style="width: 18rem;">
+      <img class="card-img-top" src="/static/images/image4.jpg" alt="Courses">
+      <div class="card-body">
+        <h5 class="card-title">Courses (age 13-16)</h5>
+        <p class="card-text myfont">Unleash Your Wild Side at Diddy Zoo!</p>
+        <a href="{% url '' %}" class="btn btn-primary">Go to the page</a>
+      </div>
+    </div>
+  </div>  
+  <div class="col-sm">
+    <div class="card shadow-lg" style="width: 18rem;">
+      <img class="card-img-top" src="/static/images/courses3.png" alt="Courses">
+      <div class="card-body">
+        <h5 class="card-title">Courses (age 17)</h5>
+        <p class="card-text myfont">Unleash Your Wild Side at Diddy Zoo!</p>
+        <a href="{% url '' %}" class="btn btn-primary">Go to the page</a>
+      </div>
+    </div> 
+  </div>
+</div>
+</div>
+
+
 
 
 {% endblock %}

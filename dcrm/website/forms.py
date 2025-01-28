@@ -1,16 +1,17 @@
 from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm 
 from django.contrib.auth.models import User  
 from django.core.validators import MinValueValidator
-from .models import Ride_Bookings
+from .models import Ride_Bookings,CustomUser
 
 from django import forms 
+
 from django.forms.widgets import PasswordInput, TextInput 
 
 #- register or create a user 
 
 class CreateUserForm(UserCreationForm): 
     class Meta: 
-        model= User 
+        model = CustomUser
         fields= ['username', 'password1', 'password2'] 
 
 

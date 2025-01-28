@@ -1,12 +1,19 @@
 from django.db import models 
 
-from django.contrib.auth.models import AbstractUser  
+from django.contrib.auth.models import AbstractUser,BaseUserManager  
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
+
+
+
 class CustomUser(AbstractUser): 
+    username = models.CharField(max_length=200,unique=True)
+    password = models.CharField(max_length=200)
     points = models.IntegerField(default=0) 
     address=models.CharField(max_length=200, blank=True) 
     phone = models.CharField(max_length=14, blank=True) 
+    USERNAME_FIELD = 'username'
 
 class Ride_Bookings(models.Model): 
     booking_id = models.AutoField(primary_key=True, editable= False) 
